@@ -1,0 +1,80 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>ПОЛОТНО КЛИКЕР</title>
+  <script>
+var pixels = 0;
+var passive = 0;
+var clickworth = 1;
+function updatetext(){
+    let elem1 = document.getElementById("paintinfo");
+    elem1.innerText = 'Ты закрасил ' + pixels + ' пикселей.';
+
+    let elem2 = document.getElementById("pixelinfo");
+    elem2.innerText = 'За один клик ты закрашиваешь ' + clickworth + ' пикселей.';
+
+    let elem3 = document.getElementById("autopaintinfo");
+    elem3.innerText = 'Художники-рабы красят за тебя ' + passive + ' пикселей в секунду.';
+};
+function clickpaint(){
+    pixels += 1;
+    updatetext();
+    //alert('a');
+};
+setInterval(updatetext, 100);
+  </script>
+  <style>
+  table.mainf {
+    table-layout: fixed;
+    word-wrap:break-word;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    border-collapse: collapse;
+  }
+  td.a {
+    border: 1px solid black;
+  }
+  table.upgrades {
+    width: 100%; 
+    height: 100%; 
+    border: 2px solid gray;
+    border-collapse: collapse;
+  }
+  .hp {
+    border: 2px solid gray;
+  }
+  </style>
+ </head>
+ <body> 
+  <table class="mainf" align=center>
+    <tr>
+      <td class="a" style="width: 25%; text-align: center">
+      <h2>НАЖИМАЙ НА ЭТУ КНОПКУ<br>ЧТОБЫ ЗАКРАСИТЬ ПОЛОТНО</h2>
+      <p>Чем больше пикселей на полотне ты закрасишь, тем ты будешь круче!</p>
+      <p><button id="popup" style="z-index: 60;" onclick="clickpaint();">КРАСИТЬ!</button></p>
+      <span id="pixelinfo">-</span><br>
+      <span id="paintinfo">-</span><br>
+      <span id="autopaintinfo">-</span>
+      </td>
+      
+      <td class="a" style="width: 50%;">
+      <canvas id="canvas"></canvas>
+      </td>
+      
+      <td class="a" style="width: 10%;">
+          <table class="upgrades" style="text-align: center;">
+            <tr class="hp" style="height: 50px;">
+              <td>
+                УЛУЧШЕНИЯ
+              </td>
+            </tr>
+            <tr class="hp" style="height: 0px;"><td><h3>Дети с улиц<br>(15pix)</h3><p>Немного поднимают активный доход</p></td></tr>
+            <tr class="hp" style="height: 0px;"><td><h3>Простейший скрипт из интернета<br>(55pix)</h3><p>Немного поднимает пассивный доход</p></td></tr>
+            <tr><td></td></tr>
+          </table>
+      </td>
+    </tr>
+  </table>
+ </body>
+</html>
